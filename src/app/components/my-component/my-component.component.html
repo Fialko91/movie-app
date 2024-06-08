@@ -1,0 +1,12 @@
+<p class="class-name">{{hello}}</p>
+
+<div class="movie-card">
+  <img [src]="data.backdrop_path" alt="{{ data.title }}" class="movie-image">
+  <div class="movie-details">
+    <h2>{{ data.title }}</h2>
+    <p>{{ data.description }}</p>
+    <p>Рейтинг: {{ data.rating }}</p>
+    <button (click)="addToFavorites()">Додати до улюблених</button>
+    <button (click)="addToWatchList()">Додати до списку перегляду</button>
+  </div>
+</div>
