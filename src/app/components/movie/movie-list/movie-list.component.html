@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="wrap">
+    <app-movie-card
+      [data]="movies"
+      (addFavorite)="handleAddFavorite($event)"
+      (addWatchList)="handleAddWatchList($event)"
+    ></app-movie-card>
+
+    <div class="info-block">
+      <div class="favorite-list" >
+        Улюблене:
+        <div class="favorite-list__item">
+          @defer (when favoriteList.length) {
+            @for(movie of favoriteList; track $index) {
+              <div class="favorite-item">
+                <img [src]="movie.img">
+                <div class="movie-name">{{movie.title}}</div>
+              </div>
+            }
+          }
+          @placeholder {
+            <img src="assets/images/cat_cry.jpg" alt="cat_cry" class="cat">
+            <div class="favorite-list__empty">Зараз тут пусто!</div>
+          }
+        </div>
+      </div>
+      <div class="watch-list" >
+        Подивитися:
+        <div class="watch-list__item">
+          @defer (when watchList.length) {
+            @for (movie of watchList; track $index) {
+              <div class="favorite-item">
+                <img [src]="movie.img">
+                <div class="movie-name">{{movie.title}}</div>
+              </div>
+            }
+          }
+          @placeholder {
+            <img src="assets/images/cat_cry.jpg" alt="cat_cry" class="cat">
+            <div class="favorite-list__empty">Зараз тут пусто!</div>
+          }
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

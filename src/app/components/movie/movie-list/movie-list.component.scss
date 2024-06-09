@@ -1,0 +1,26 @@
+.info-block {
+  margin: 40px auto 0;
+  width: clamp(360px, 100%, 1280px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cat {
+  width: 200px;
+}
+
+.favorite-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.favorite-item {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 200px 1fr;
+
+  img {
+    width: 100%;
+  }
+}

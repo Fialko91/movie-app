@@ -1,9 +1,13 @@
 
-<app-my-component
-  [data]="movie"
-  (addFavorite)="handleAddFavorite()"
-  (addWatchList)="handleAddWatchList()"
-></app-my-component>
+<!--<app-my-component-->
+<!--  [data]="movie"-->
+<!--  (addFavorite)="handleAddFavorite()"-->
+<!--  (addWatchList)="handleAddWatchList()"-->
+<!--&gt;</app-my-component>-->
+
+<div class="movie-list-wrap">
+  <app-movie-list></app-movie-list>
+</div>
 
 
 <router-outlet></router-outlet>
