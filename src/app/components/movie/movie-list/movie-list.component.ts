@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MovieCardComponent} from "./movie-card/movie-card.component";
 import {FormsModule} from "@angular/forms";
 import {JsonPipe, NgForOf} from "@angular/common";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-movie-list',
@@ -39,6 +40,7 @@ export class MovieListComponent {
       vote_count: 807,
       img: '../assets/images/KingdomofthePlanetoftheApes.jpg',
       trailer: 'https://youtu.be/XtFI7SNtVpY?si=Y3IG0nmHHp-QDA-Z',
+      duration: 8143
     },
     {
       adult: false,
@@ -58,6 +60,7 @@ export class MovieListComponent {
       vote_count: 1296,
       img: '../assets/images/CivilWar.jpg',
       trailer: 'https://youtu.be/c2G18nIVpNE?si=nxdyPygJBR4LHvu9',
+      duration: 7485
     },
     {
       adult: false,
@@ -77,6 +80,7 @@ export class MovieListComponent {
       vote_count: 2519,
       img: '../assets/images/GodzillaVSKong.webp',
       trailer: 'https://youtu.be/qqrpMRDuPfc?si=QpxR3BXyFa65CD8G',
+      duration: 8411
     },
     {
       adult: false,
@@ -96,20 +100,21 @@ export class MovieListComponent {
       vote_count: 341,
       img: '../assets/images/Tarot.jpg',
       trailer: 'https://youtu.be/j3wUuh8GJto?si=8VE9mk8gRHScgaoO',
+      duration: 6974
     },
   ];
 
-  handleAddFavorite($event: number) {
+  handleAddFavorite(id: number) {
     this.movies.forEach(el => {
-      if (el.id === $event ) {
+      if (el.id === id ) {
         this.favoriteList.push(el);
       }
     })
   }
 
-  handleAddWatchList($event: number) {
+  handleAddWatchList(id: number) {
     this.movies.forEach(el => {
-      if (el.id === $event) {
+      if (el.id === id) {
         this.watchList.push(el);
       }
     })
