@@ -5,11 +5,13 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {MyComponentComponent} from "./components/my-component/my-component.component";
 import {MovieListComponent} from "./components/movie/movie-list/movie-list.component";
+import {MaterialMovieCardComponent} from "./components/material-movie-card/material-movie-card.component";
+import {PrimengMovieCardComponent} from "./components/primeng-movie-card/primeng-movie-card.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MyComponentComponent, MovieListComponent],
+  imports: [CommonModule, RouterOutlet, MyComponentComponent, MovieListComponent, MaterialMovieCardComponent, PrimengMovieCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
