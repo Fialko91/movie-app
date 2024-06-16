@@ -2,23 +2,23 @@
   margin: 40px auto 0;
   width: clamp(360px, 100%, 1280px);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 300px 300px;
+  gap: 28px;
 }
 
 .cat {
   width: 200px;
 }
 
-.favorite-list__item {
+.list__item {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.favorite-item {
+.item {
   display: grid;
-  gap: 8px;
-  grid-template-columns: 200px 1fr;
+  gap: 12px;
 
   img {
     width: 100%;
