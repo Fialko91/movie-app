@@ -1,12 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {NgClass, NgForOf} from "@angular/common";
+import {TimeFormatPipe} from "../../../../pipes/time-format.pipe";
 
 @Component({
   selector: 'app-movie-card',
   standalone: true,
   imports: [
-    NgForOf,
-    NgClass
+    TimeFormatPipe,
   ],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss'

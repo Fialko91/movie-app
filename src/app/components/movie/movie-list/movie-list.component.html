@@ -11,7 +11,7 @@
         Улюблене:
         <div class="favorite-list__item">
           @defer (when favoriteList.length) {
-            @for(movie of favoriteList; track $index) {
+            @for(movie of favoriteList; track movie.id) {
               <div class="favorite-item">
                 <img [src]="movie.img">
                 <div class="movie-name">{{movie.title}}</div>
@@ -28,7 +28,7 @@
         Подивитися:
         <div class="watch-list__item">
           @defer (when watchList.length) {
-            @for (movie of watchList; track $index) {
+            @for (movie of watchList; track movie.id) {
               <div class="favorite-item">
                 <img [src]="movie.img">
                 <div class="movie-name">{{movie.title}}</div>
@@ -39,7 +39,6 @@
             <img src="assets/images/cat_cry.jpg" alt="cat_cry" class="cat">
             <div class="favorite-list__empty">Зараз тут пусто!</div>
           }
-
         </div>
       </div>
     </div>
