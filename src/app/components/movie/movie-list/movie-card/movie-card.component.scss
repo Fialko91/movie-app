@@ -13,41 +13,35 @@
   gap: 12px;
   padding: 8px;
   border-radius: 12px;
+  box-shadow: 0 3px 13px 0 rgba(0,0,0,0.75);
+  //background-image: linear-gradient(180deg, #c180e3, #33044f);
 
-  background-image: linear-gradient(180deg, #c180e3, #33044f);
-
-  &__watch {
-    position: absolute;
-    width: 20px;
-    top: 16px;
-    left: 16px;
-    height: 20px;
-    cursor: pointer;
-    background-color: greenyellow;
-    padding: 4px;
-
-    &.addToList {
-      svg {
-        fill: red;
-      }
-    }
-  }
-
+  &__watch,
   &__favorite {
     position: absolute;
     width: 20px;
     top: 16px;
-    right: 16px;
     height: 20px;
     cursor: pointer;
     background-color: greenyellow;
     padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    &.addToFavorite {
-      svg {
-        fill: red;
-      }
+    svg {
+      width: 14px;
+      height: 14px;
+      display: block;
     }
+  }
+
+  &__watch {
+    left: 16px;
+  }
+
+  &__favorite {
+    right: 16px;
   }
 
   .card-image-block {
@@ -55,9 +49,9 @@
   }
 
   &__img {
-    width: 100%;
     aspect-ratio: 6 / 9;
     object-fit: cover;
+    min-width: 284px;
   }
 
   &__name {
@@ -90,21 +84,15 @@
   }
 
   &__desc {
-    color: rgba(225, 225, 225, 0.67);
-  }
-
-  .btn-detail {
-    color: white;
-    text-align: center;
-    margin-top: auto;
+    color: black;
   }
 
   &__details {
     padding: 20px 0;
-    color: white;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    color: black;
   }
 
   &__trailer {
@@ -112,3 +100,26 @@
     text-decoration: underline;
   }
 }
+
+.p-card {
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.p-card-body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  padding-top: 20px;
+}
+
+.p-card-content {
+  width: 100%;
+  margin-top: auto;
+}
+
