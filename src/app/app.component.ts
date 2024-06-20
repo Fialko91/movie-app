@@ -7,11 +7,13 @@ import {MyComponentComponent} from "./components/my-component/my-component.compo
 import {MovieListComponent} from "./components/movie/movie-list/movie-list.component";
 import {MaterialMovieCardComponent} from "./components/material-movie-card/material-movie-card.component";
 import {PrimengMovieCardComponent} from "./components/primeng-movie-card/primeng-movie-card.component";
+import {HeaderComponent} from "./components/header/header.component";
+import {SidebarComponent} from "./components/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MyComponentComponent, MovieListComponent, MaterialMovieCardComponent, PrimengMovieCardComponent],
+  imports: [CommonModule, RouterOutlet, MyComponentComponent, MovieListComponent, MaterialMovieCardComponent, PrimengMovieCardComponent, HeaderComponent, SidebarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
