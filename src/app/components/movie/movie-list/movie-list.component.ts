@@ -3,6 +3,7 @@ import {MovieCardComponent} from "./movie-card/movie-card.component";
 import {FormsModule} from "@angular/forms";
 import {JsonPipe, NgForOf} from "@angular/common";
 import {filter} from "rxjs";
+import {MatCard, MatCardImage, MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: 'app-movie-list',
@@ -11,7 +12,10 @@ import {filter} from "rxjs";
     MovieCardComponent,
     FormsModule,
     NgForOf,
-    JsonPipe
+    JsonPipe,
+    MatCard,
+    MatCardImage,
+    MatCardTitle
   ],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.scss'
@@ -107,7 +111,7 @@ export class MovieListComponent {
   handleAddFavorite(id: number) {
     this.movies.forEach(el => {
       if (el.id === id ) {
-        this.favoriteList.push(el);
+        this.favoriteList = Array.from(new Set([...this.favoriteList, el]));
       }
     })
   }
@@ -115,11 +119,8 @@ export class MovieListComponent {
   handleAddWatchList(id: number) {
     this.movies.forEach(el => {
       if (el.id === id) {
-        this.watchList.push(el);
+        this.watchList = Array.from(new Set([...this.watchList, el]));
       }
     })
   }
-
-
-
 }
