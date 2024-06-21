@@ -1,5 +1,5 @@
 import {
-  Component,
+  Component, ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
@@ -9,15 +9,21 @@ import {MaterialMovieCardComponent} from "./components/material-movie-card/mater
 import {PrimengMovieCardComponent} from "./components/primeng-movie-card/primeng-movie-card.component";
 import {HeaderComponent} from "./components/header/header.component";
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
+import {SidebarModule} from "primeng/sidebar";
+import {Button} from "primeng/button";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MyComponentComponent, MovieListComponent, MaterialMovieCardComponent, PrimengMovieCardComponent, HeaderComponent, SidebarComponent],
+  imports: [CommonModule, RouterOutlet, MyComponentComponent, MovieListComponent, MaterialMovieCardComponent, PrimengMovieCardComponent, HeaderComponent, SidebarComponent, SidebarModule, Button],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
+
+  sidebarVisible: boolean = false;
+
 
   movie = {
     "backdrop_path": "../assets/image/img.jpg",
@@ -36,4 +42,7 @@ export class AppComponent {
     console.log('handleAddWatchList')
   }
 
+  toggle() {
+    this.sidebarVisible = !this.sidebarVisible;
+  }
 }

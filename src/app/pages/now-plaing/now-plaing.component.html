@@ -1,0 +1,28 @@
+<div class="movie-cards">
+  @for ( card of mockResult; track  card.id ) {
+    <p-card >
+      <div class="add-block">
+        <p class="pi pi-heart"></p>
+        <p class="pi pi-list-check"></p>
+      </div>
+
+      <div class="card-title">{{card.title}}</div>
+      <ng-template pTemplate="header">
+        <p-image
+          src="https://image.tmdb.org/t/p/w500/{{card.backdrop_path}}"
+          alt="Image"
+          [preview]="true" />
+      </ng-template>
+      <div class="card-details">
+        <p>оцінка {{card.vote_average}}</p>
+        <p>дата реліза {{card.release_date | date: 'shortDate'}}</p>
+      </div>
+      <p class="card-desc">
+        {{card.overview}}
+      </p>
+      <button class="btn-details" type="button" (click)="goToChild(card.id)">details <span class="pi pi-arrow-right"></span></button>
+    </p-card>
+  }
+</div>
+
+
