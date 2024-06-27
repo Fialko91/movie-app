@@ -40,7 +40,8 @@
 
   &__router {
     grid-area: router;
-    background-color: aqua;
+    max-width: 1440px;
+    margin: 0 auto;
   }
 
   .p-sidebar-header {
