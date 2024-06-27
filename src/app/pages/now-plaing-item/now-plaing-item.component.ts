@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {nowPlayingMovies} from "./../../../../assets/mock-data/mock-data"
+import {nowPlayingMovies} from "../../../assets/mock-data/mock-data"
 import {JsonPipe} from "@angular/common";
 import {CardModule} from "primeng/card";
 import {ImageModule} from "primeng/image";

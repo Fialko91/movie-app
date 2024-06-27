@@ -1,1 +1,9 @@
-<p>my-favorites-list works!</p>
+<div class="card-list">
+  @for ( movie of movieList; track movie.id) {
+    <div class="card-item">
+      <img src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}"  alt="{{movie.title}}" class="card-item__image">
+      <p class="card-item__title">{{movie.title}}</p>
+    </div>
+  }
+</div>
+

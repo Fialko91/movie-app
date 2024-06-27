@@ -50,7 +50,7 @@ export const nowPlayingMovies = [
       28,
       9648
     ],
-    "id": 1001311,
+    "id": 10201311,
     "original_language": "fr",
     "original_title": "Sous la Seine",
     "overview": "In the Summer of 2024, Paris is hosting the World Triathlon Championships on the Seine for the first time. Sophia, a brilliant scientist, learns from Mika, a young environmental activist, that a large shark is swimming deep in the river. To avoid a bloodbath at the heart of the city, they have no choice but to join forces with Adil, the Seine river police commander.",
@@ -153,7 +153,7 @@ export const popularMovies = [
       12,
       35
     ],
-    "id": 1022789,
+    "id": 10122789,
     "original_language": "en",
     "original_title": "Inside Out 2",
     "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
@@ -173,7 +173,7 @@ export const popularMovies = [
       12,
       28
     ],
-    "id": 653346,
+    "id": 6523346,
     "original_language": "en",
     "original_title": "Kingdom of the Planet of the Apes",
     "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike.",
@@ -215,7 +215,7 @@ export const popularMovies = [
       53,
       35
     ],
-    "id": 573435,
+    "id": 5723435,
     "original_language": "en",
     "original_title": "Bad Boys: Ride or Die",
     "overview": "After their late former Captain is framed, Lowrey and Burnett try to clear his name, only to end up on the run themselves.",
@@ -522,7 +522,7 @@ export const upcomingMovies = [
       12,
       35
     ],
-    "id": 1022789,
+    "id": 1027892,
     "original_language": "en",
     "original_title": "Inside Out 2",
     "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
@@ -543,7 +543,7 @@ export const upcomingMovies = [
       53,
       35
     ],
-    "id": 573435,
+    "id": 5273435,
     "original_language": "en",
     "original_title": "Bad Boys: Ride or Die",
     "overview": "After their late former Captain is framed, Lowrey and Burnett try to clear his name, only to end up on the run themselves.",
@@ -758,3 +758,5 @@ export const upcomingMovies = [
     "vote_count": 287
   },
 ]
+
+export const movieData = [...nowPlayingMovies, ...popularMovies, ...topRatedMovies, ...upcomingMovies]
