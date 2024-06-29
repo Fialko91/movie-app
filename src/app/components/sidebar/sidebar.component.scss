@@ -1,0 +1,30 @@
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 60px 12px 0;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  a {
+    &.active {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
+}
