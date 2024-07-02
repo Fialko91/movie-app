@@ -13,7 +13,7 @@
           @defer (when favoriteList.length) {
             @for(movie of favoriteList; track movie.id) {
               <mat-card class="item" appearance="outlined">
-                <img mat-card-image [src]="movie.img">
+                <img mat-card-image src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}">
                 <mat-card-title class="movie-name">{{movie.title}}</mat-card-title>
               </mat-card>
             }
@@ -30,7 +30,7 @@
           @defer (when watchList.length) {
             @for (movie of watchList; track movie.id) {
               <mat-card class="item" appearance="outlined">
-                <img mat-card-image [src]="movie.img">
+                <img mat-card-image src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}">
                 <mat-card-title class="movie-name">{{movie.title}}</mat-card-title>
               </mat-card>
             }

@@ -3,3 +3,53 @@
   flex-direction: column;
   min-height: 100%;
 }
+
+.main-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 80px;
+  gap: 12px;
+  height: 100%;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header header"
+    "router router router"
+    "router router router";
+
+  &__header {
+    grid-area: header;
+    background-color: orange;
+    position: relative;
+  }
+
+  .p-button {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: black;
+    padding: 12px;
+    width: 40px;
+    border: none;
+    height: 40px;
+  }
+
+  &__sidebar {
+    background-color: greenyellow;
+    height: 100%;
+  }
+
+  &__router {
+    grid-area: router;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .p-sidebar-header {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    width: 40px;
+    height: 40px;
+  }
+
+}

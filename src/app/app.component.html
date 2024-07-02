@@ -5,9 +5,9 @@
 <!--  (addWatchList)="handleAddWatchList()"-->
 <!--&gt;</app-my-component>-->
 
-<div class="movie-list-wrap">
-  <app-movie-list></app-movie-list>
-</div>
+<!--<div class="movie-list-wrap">-->
+<!--  <app-movie-list></app-movie-list>-->
+<!--</div>-->
 
 <!--<app-material-movie-card></app-material-movie-card>-->
 <!--<br>-->
@@ -15,4 +15,19 @@
 <!--<br>-->
 <!--<app-primeng-movie-card></app-primeng-movie-card>-->
 
-<router-outlet></router-outlet>
+<main class="main-page" >
+  <div class="main-page__header">
+    <app-header></app-header>
+    <p-button class="btn-menu" (click)="sidebarVisible = true" icon="pi pi-bars" />
+  </div>
+
+  <p-sidebar [(visible)]="sidebarVisible">
+    <div class="main-page__sidebar">
+      <app-sidebar (toggleElement)="toggle()"></app-sidebar>
+    </div>
+  </p-sidebar>
+
+  <div class="main-page__router">
+    <router-outlet></router-outlet>
+  </div>
+</main>

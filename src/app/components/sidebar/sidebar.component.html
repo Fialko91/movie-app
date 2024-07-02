@@ -1,0 +1,12 @@
+<aside class="side-menu">
+  <a class="side-menu__logo" routerLink="/" (click)="removeMenu(true)">
+    <img src="assets/images/logo.svg" alt="logo">
+    <p>oscar cinema</p>
+  </a>
+  <ul class="side-menu__links">
+    <li class="side-menu__link"><a (click)="removeMenu(true)" routerLink="now-plaing" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">now plaing</a></li>
+    <li class="side-menu__link"><a (click)="removeMenu(true)" routerLink="popular" routerLinkActive="active">popular</a></li>
+    <li class="side-menu__link"><a (click)="removeMenu(true)" routerLink="top-rate" routerLinkActive="active">top rate</a></li>
+    <li class="side-menu__link"><a (click)="removeMenu(true)" routerLink="upcoming" routerLinkActive="active">upcoming</a></li>
+  </ul>
+</aside>
