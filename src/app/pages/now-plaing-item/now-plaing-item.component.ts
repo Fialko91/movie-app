@@ -25,6 +25,10 @@ export class NowPlaingItemComponent implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.item = this.data.find(item => item.id === id);
+    console.log(id)
+    this.item = this.data.find(item => {
+      console.log("==>", item.id);
+      item.id === id
+    });
   }
 }

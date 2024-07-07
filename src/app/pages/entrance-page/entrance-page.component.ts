@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NewMovieCardComponent} from "../../components/new-movie-card/new-movie-card.component";
 import {GetMockDataService} from "../../services/get-mock-data.service";
 
