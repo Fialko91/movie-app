@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NewMovieCardComponent} from "../../components/new-movie-card/new-movie-card.component";
-import {GetMockDataService} from "../../services/get-mock-data.service";
+import {MovieAllService} from "../../services/movie-all.service";
+import {Movie} from "../../models/movie.model";
 
 @Component({
   selector: 'app-entrance-page',
@@ -11,10 +12,20 @@ import {GetMockDataService} from "../../services/get-mock-data.service";
   templateUrl: './entrance-page.component.html',
   styleUrl: './entrance-page.component.scss'
 })
-export class EntrancePageComponent {
+export class EntrancePageComponent implements OnInit {
 
-  allMovies: any = []
-  constructor( private allMovieData: GetMockDataService) {
-    this.allMovies = this.allMovieData.getAllMovieData()
+  allMovies: Movie[] | undefined = []
+  public categories = ["popular", "top_rated", "now_playing", "upcoming"];
+  constructor(
+    private movieAllService: MovieAllService
+    ) {
+  }
+
+  ngOnInit(): void {
+    this.movieAllService.getAllCategoryMovieList(this.categories).subscribe(data => {
+      data.forEach(el => {
+        this.allMovies?.push(...el.results)
+      })
+    })
   }
 }

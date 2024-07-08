@@ -2,8 +2,14 @@
   @for ( card of mockResult; track  card.id ) {
     <p-card >
       <div class="add-block">
-        <p class="pi pi-heart" (click)="addToFavoriteLIst(card.id)"></p>
-        <p class="pi pi-list-check" (click)="addToWatchList(card.id)"></p>
+        <p
+          class="pi {{selectedFavoritsMovieIds?.includes(card.id) ? 'pi-heart-fill' : 'pi-heart'}}"
+          (click)="addToFavoriteLIst(card.id)"
+        ></p>
+        <p
+          class="pi {{selectedWatchMovieIds?.includes(card.id) ? 'pi-check-circle' : 'pi-list-check'}}"
+          (click)="addToWatchList(card.id)"
+        ></p>
       </div>
 
       <div class="card-title">{{card.title}}</div>
@@ -11,7 +17,7 @@
         <p-image
           src="https://image.tmdb.org/t/p/w500/{{card.backdrop_path}}"
           alt="Image"
-          [preview]="true" />
+        />
       </ng-template>
       <div class="card-details">
         <p>оцінка {{card.vote_average}}</p>
@@ -20,7 +26,7 @@
       <p class="card-desc">
         {{card.overview}}
       </p>
-      <button class="btn-details" type="button" (click)="goToChild(card.id)">details <span class="pi pi-arrow-right"></span></button>
+      <button class="btn-details" type="button" (click)="goToChild(card?.id)">details <span class="pi pi-arrow-right"></span></button>
     </p-card>
   }
 </div>
