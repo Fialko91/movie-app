@@ -3,7 +3,12 @@
     src="https://image.tmdb.org/t/p/w500/{{item?.backdrop_path}}"
     alt="Image"
     [preview]="true" />
-  <p>
-    {{item?.overview}}
-  </p>
+
+  <div class="card-desc__info">
+    <div class="card-desc__actions">
+      <p class="pi {{selectedFavoritsMovieIds?.includes(item?.id) ? 'pi-heart-fill' : 'pi-heart'}}" (click)="addToFavoriteLIst(item?.id)"></p>
+      <p class="pi {{selectedWatchMovieIds?.includes(item?.id) ? 'pi-check-circle' : 'pi-list-check'}}" (click)="addToWatchList(item?.id)"></p>
+    </div>
+    <p>{{item?.overview}}</p>
+  </div>
 </div>

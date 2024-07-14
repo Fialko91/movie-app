@@ -5,9 +5,23 @@
 .nav {
   height: 100%;
   width: 100%;
-  display: flex;
+  display: grid;
   align-items: center;
+  grid-template-columns: auto 1fr;
   justify-content: center;
+  padding: 0 80px;
+
+  &-logo  {
+    width: 110px;
+    height: 40px;
+    display: flex;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
   &-ul {
     display: flex;
     width: 100%;

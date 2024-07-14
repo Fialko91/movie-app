@@ -11,11 +11,24 @@ import {HeaderComponent} from "./components/header/header.component";
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {SidebarModule} from "primeng/sidebar";
 import {Button} from "primeng/button";
+import {HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MyComponentComponent, MovieListComponent, MaterialMovieCardComponent, PrimengMovieCardComponent, HeaderComponent, SidebarComponent, SidebarModule, Button],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    MyComponentComponent,
+    MovieListComponent,
+    MaterialMovieCardComponent,
+    PrimengMovieCardComponent,
+    HeaderComponent,
+    SidebarComponent,
+    SidebarModule,
+    Button,
+    HttpClientModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   encapsulation: ViewEncapsulation.None
