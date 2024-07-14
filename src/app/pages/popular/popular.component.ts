@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NewMovieCardComponent} from "../../components/new-movie-card/new-movie-card.component";
 import {GetMockDataService} from "../../services/get-mock-data.service";
 import {MovieService} from "../../services/movie.service";
 import {Movie} from "../../models/movie.model";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-popular',
@@ -13,23 +14,27 @@ import {Movie} from "../../models/movie.model";
   templateUrl: './popular.component.html',
   styleUrl: './popular.component.scss'
 })
-export class PopularComponent implements OnInit {
+export class PopularComponent implements OnInit, OnDestroy {
 
-  // public popularList: any
-  public dataResult: Movie[] | undefined
+  public dataResult: Movie[] | undefined;
+  private destroy$ = new Subject<void>();
 
   constructor(
-    // private popularMovie: GetMockDataService,
     private movieService: MovieService
-    ) {
-    // this.popularList = this.popularMovie.getPopularMovies()
-  }
+    ) {}
 
   public ngOnInit(): void {
-    this.movieService.getMovieListByCategory('popular').subscribe(data => {
+    this.movieService.getMovieListByCategory('popular')
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe(data => {
       this.dataResult = data.results
     })
   }
 
-
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

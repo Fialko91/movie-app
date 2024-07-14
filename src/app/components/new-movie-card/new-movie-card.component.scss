@@ -1,8 +1,10 @@
 .movie-cards {
   display: grid;
-  grid-template-columns:  repeat( auto-fit, minmax(300px, 1fr));
+  grid-template-columns:  repeat( auto-fit, minmax(200px, 300px));
   gap: 12px;
   padding: 20px;
+  margin: 0 auto;
+  max-width: 1280px;
 
   .p-element {
     border-radius: 12px

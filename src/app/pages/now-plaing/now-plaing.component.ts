@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {MovieListComponent} from "../../components/movie/movie-list/movie-list.component";
 import {CardModule} from "primeng/card";
 import {DatePipe, JsonPipe} from "@angular/common";
@@ -8,6 +8,7 @@ import {NewMovieCardComponent} from "../../components/new-movie-card/new-movie-c
 import {GetMockDataService} from "../../services/get-mock-data.service";
 import {MovieService} from "../../services/movie.service";
 import {Movie, MovieModel} from "../../models/movie.model";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-now-plaing',
@@ -25,22 +26,28 @@ import {Movie, MovieModel} from "../../models/movie.model";
   styleUrl: './now-plaing.component.scss',
   encapsulation: ViewEncapsulation.None
 })
-export class NowPlaingComponent implements OnInit{
+export class NowPlaingComponent implements OnInit, OnDestroy {
 
-  // public nowPlaingList: any = []
   public dataResult: Movie[] | undefined
+  private destroy$ = new Subject<void>();
 
   constructor(
-    // private nowPlaingMovie: GetMockDataService,
     private movieService: MovieService
-  ) {
-    // this.nowPlaingList = this.nowPlaingMovie.getNowPlayingMovies()
-  }
+  ) {}
 
   public ngOnInit(): void {
-    this.movieService.getMovieListByCategory('now_playing').subscribe(data => {
+    this.movieService.getMovieListByCategory('now_playing')
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe(data => {
       this.dataResult = data.results
     })
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next()
+    this.destroy$.complete()
   }
 
 
