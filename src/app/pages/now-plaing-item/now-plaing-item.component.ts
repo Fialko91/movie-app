@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {JsonPipe} from "@angular/common";
 import {CardModule} from "primeng/card";
@@ -7,6 +7,7 @@ import {MovieAllService} from "../../services/movie-all.service";
 import {Movie} from "../../models/movie.model";
 import {AddToListService} from "../../services/add-to-list.service";
 import {SaveIdForAddedToListService} from "../../services/save-id-for-added-to-list.service";
+import {pipe, Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-now-plaing-item',
@@ -19,12 +20,13 @@ import {SaveIdForAddedToListService} from "../../services/save-id-for-added-to-l
   templateUrl: './now-plaing-item.component.html',
   styleUrl: './now-plaing-item.component.scss'
 })
-export class NowPlaingItemComponent implements OnInit {
+export class NowPlaingItemComponent implements OnInit, OnDestroy {
   public item: Movie | undefined
   public data: Movie[] | undefined = []
   public categories = ["popular", "top_rated", "now_playing", "upcoming"];
   public selectedFavoritsMovieIds: any[] = []
   public selectedWatchMovieIds: any[] = []
+  private destroy$ = new Subject<void>();
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +35,11 @@ export class NowPlaingItemComponent implements OnInit {
     private saveId: SaveIdForAddedToListService
   ) {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.movieAllService.getAllCategoryMovieList(this.categories).subscribe(data => {
+    this.movieAllService.getAllCategoryMovieList(this.categories)
+      .pipe(
+        takeUntil(this.destroy$),
+      )
+      .subscribe(data => {
       data.forEach(el => {
         this.data?.push(...el.results)
       })
@@ -64,5 +70,10 @@ export class NowPlaingItemComponent implements OnInit {
   ngOnInit()  {
     this.selectedFavoritsMovieIds = this.saveId.setFavoriteListId()
     this.selectedWatchMovieIds = this.saveId.setWatchListId()
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
