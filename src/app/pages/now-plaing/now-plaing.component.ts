@@ -9,6 +9,9 @@ import {GetMockDataService} from "../../services/get-mock-data.service";
 import {MovieService} from "../../services/movie.service";
 import {Movie, MovieModel} from "../../models/movie.model";
 import {Subject, takeUntil} from "rxjs";
+import {Store} from "@ngrx/store";
+import {loadMovies} from "../../store/actions";
+import {selectMovies} from "../../store/selectors";
 
 @Component({
   selector: 'app-now-plaing',
@@ -28,21 +31,33 @@ import {Subject, takeUntil} from "rxjs";
 })
 export class NowPlaingComponent implements OnInit, OnDestroy {
 
-  public dataResult: Movie[] | undefined
+  public dataResult: any
   private destroy$ = new Subject<void>();
+  selectedMovies$ = this.store.select(selectMovies);
 
   constructor(
-    private movieService: MovieService
+    private movieService: MovieService,
+    private store: Store,
   ) {}
 
   public ngOnInit(): void {
-    this.movieService.getMovieListByCategory('now_playing')
+    this.store.dispatch(loadMovies({category: 'now_playing'}))
+
+    this.selectedMovies$
       .pipe(
         takeUntil(this.destroy$)
       )
-      .subscribe(data => {
-      this.dataResult = data.results
-    })
+      .subscribe(movies => {
+        this.dataResult = movies
+      })
+
+    // this.movieService.getMovieListByCategory('now_playing')
+    //   .pipe(
+    //     takeUntil(this.destroy$)
+    //   )
+    //   .subscribe(data => {
+    //   this.dataResult = data.results
+    // })
   }
 
   public ngOnDestroy(): void {

@@ -5,6 +5,9 @@ import {Router} from "@angular/router";
 import {MovieService} from "../../services/movie.service";
 import {Movie} from "../../models/movie.model";
 import {Subject, takeUntil} from "rxjs";
+import {Store} from "@ngrx/store";
+import {selectMovies} from "../../store/selectors";
+import {loadMovies} from "../../store/actions";
 
 @Component({
   selector: 'app-top-rate',
@@ -17,21 +20,33 @@ import {Subject, takeUntil} from "rxjs";
 })
 export class TopRateComponent implements OnInit, OnDestroy {
 
-  public dataResult: Movie[] | undefined
+  public dataResult: any
   private destroy$ = new Subject<void>();
+  selectedMovies$ = this.store.select(selectMovies);
 
   constructor(
     private movieService: MovieService,
+    private store: Store,
   ) {}
 
   public ngOnInit(): void {
-    this.movieService.getMovieListByCategory('top_rated')
+    this.store.dispatch(loadMovies({ category: 'top_rated' }))
+
+    this.selectedMovies$
       .pipe(
         takeUntil(this.destroy$)
       )
-      .subscribe(data => {
-      this.dataResult = data.results
+      .subscribe(movies => {
+        this.dataResult = movies
     })
+
+    // this.movieService.getMovieListByCategory('top_rated')
+    //   .pipe(
+    //     takeUntil(this.destroy$)
+    //   )
+    //   .subscribe(data => {
+    //   this.dataResult = data.results
+    // })
   }
 
   public ngOnDestroy(): void {
