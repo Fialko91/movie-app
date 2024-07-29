@@ -21,3 +21,22 @@ export const MovieReducer = createReducer(
     };
   })
 )
+
+export const MovieAllReducer = createReducer(
+  initialState,
+
+  on(MovieActions.loadAllMoviesSuccess, (state, { movies }) => {
+    return {
+      ...state,
+      movies: movies,
+    };
+  }),
+
+  on(MovieActions.loadAllMoviesFailure, (state, { error }) => {
+    return {
+      ...state,
+      movies: null,
+      error: error
+    };
+  })
+)

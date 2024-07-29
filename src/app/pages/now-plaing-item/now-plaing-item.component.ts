@@ -23,7 +23,7 @@ import {pipe, Subject, takeUntil} from "rxjs";
 export class NowPlaingItemComponent implements OnInit, OnDestroy {
   public item: Movie | undefined
   public data: Movie[] | undefined = []
-  public categories = ["popular", "top_rated", "now_playing", "upcoming"];
+  // public categories = ["popular", "top_rated", "now_playing", "upcoming"];
   public selectedFavoritsMovieIds: any[] = []
   public selectedWatchMovieIds: any[] = []
   private destroy$ = new Subject<void>();
@@ -32,16 +32,16 @@ export class NowPlaingItemComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private movieAllService: MovieAllService,
     private movieId: AddToListService,
-    private saveId: SaveIdForAddedToListService
+    private saveId: SaveIdForAddedToListService,
   ) {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.movieAllService.getAllCategoryMovieList(this.categories)
+    this.movieAllService.getAllCategoryMovieList()
       .pipe(
         takeUntil(this.destroy$),
       )
       .subscribe(data => {
       data.forEach(el => {
-        this.data?.push(...el.results)
+        this.data?.push(el)
       })
       this.item = this.data?.find(el => el.id === id );
     })

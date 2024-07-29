@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {CardModule} from "primeng/card";
 import {DatePipe, NgClass} from "@angular/common";
 import {ImageModule} from "primeng/image";
@@ -37,7 +37,7 @@ export class NewMovieCardComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private movieId: AddToListService,
-    private saveId: SaveIdForAddedToListService
+    private saveId: SaveIdForAddedToListService,
     ) {
   }
 

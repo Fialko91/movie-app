@@ -15,3 +15,12 @@ export const loadMoviesFailure = createAction('[Movie] Load Moviess Failure',
 );
 
 // request for all category
+export const loadAllMovies = createAction('[Movie] Load All Movies');
+
+export const loadAllMoviesSuccess = createAction('[Movie] Load All Movies Success',
+  props<{ movies: Movie[] | null }>()
+);
+
+export const loadAllMoviesFailure = createAction('[Movie] Load All Moviess Failure',
+  props<{ error: any }>()
+);

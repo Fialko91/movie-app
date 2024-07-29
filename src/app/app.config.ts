@@ -7,7 +7,7 @@ import {provideHttpClient} from "@angular/common/http";
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { MovieReducer} from "./store/reducer";
+import {MovieAllReducer, MovieReducer} from "./store/reducer";
 import {MovieEffects} from "./store/effects";
 
 export const appConfig: ApplicationConfig = {
@@ -18,6 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideStore({
       movieState: MovieReducer,
+      movieAllState: MovieAllReducer,
     }),
     provideEffects([
       MovieEffects

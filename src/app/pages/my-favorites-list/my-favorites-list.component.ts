@@ -28,20 +28,27 @@ export class MyFavoritesListComponent implements OnDestroy {
     ) {
     this.movieIdItem = this.movieId.movieFavoriteListId
 
-    this.movieAllService.getAllCategoryMovieList(this.categories)
+    this.movieAllService.getAllCategoryMovieList()
       .pipe(
         takeUntil(this.destroy$)
       )
       .subscribe(data => {
       data.forEach(el => {
-        el.results?.forEach(movie => {
-          if (!this.movieIds.has(<number>movie.id)) {
-            if (typeof movie.id === "number") {
-              this.movieIds.add(movie.id);
-            }
-            this.allMovie?.push(movie)
+        // el.results?.forEach(movie => {
+        //   if (!this.movieIds.has(<number>movie.id)) {
+        //     if (typeof movie.id === "number") {
+        //       this.movieIds.add(movie.id);
+        //     }
+        //     this.allMovie?.push(movie)
+        //   }
+        // });
+
+        if (!this.movieIds.has(<number>el.id)) {
+          if (typeof el.id === "number") {
+            this.movieIds.add(el.id);
           }
-        });
+          this.allMovie?.push(el)
+        }
       });
 
       this.allMovie?.forEach(el => {
