@@ -7,4 +7,4 @@ export const selectMovies = createSelector(selectState, state => state.movies);
 
 //for all category
 export const selectAllState = createFeatureSelector<MovieState>('movieAllState');
-export const selectAllMovies = createSelector(selectAllState, state => state.movies);
+export const selectAllMovies = createSelector(selectAllState, state => state.AllMovies);

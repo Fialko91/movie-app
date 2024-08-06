@@ -18,7 +18,7 @@ export const loadMoviesFailure = createAction('[Movie] Load Moviess Failure',
 export const loadAllMovies = createAction('[Movie] Load All Movies');
 
 export const loadAllMoviesSuccess = createAction('[Movie] Load All Movies Success',
-  props<{ movies: Movie[] | null }>()
+  props<{ AllMovies: Movie[] | null }>()
 );
 
 export const loadAllMoviesFailure = createAction('[Movie] Load All Moviess Failure',

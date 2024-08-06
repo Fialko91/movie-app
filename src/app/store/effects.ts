@@ -42,7 +42,7 @@ export class MovieEffects {
         return this.movieAllService.getAllCategoryMovieList().pipe(
           map(movies =>
             loadAllMoviesSuccess({
-              movies: movies
+              AllMovies: movies
             })
           ),
           catchError(error =>

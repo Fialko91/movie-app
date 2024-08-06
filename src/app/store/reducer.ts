@@ -25,17 +25,17 @@ export const MovieReducer = createReducer(
 export const MovieAllReducer = createReducer(
   initialState,
 
-  on(MovieActions.loadAllMoviesSuccess, (state, { movies }) => {
+  on(MovieActions.loadAllMoviesSuccess, (state, { AllMovies }) => {
     return {
       ...state,
-      movies: movies,
+      AllMovies: AllMovies,
     };
   }),
 
   on(MovieActions.loadAllMoviesFailure, (state, { error }) => {
     return {
       ...state,
-      movies: null,
+      AllMovies: null,
       error: error
     };
   })

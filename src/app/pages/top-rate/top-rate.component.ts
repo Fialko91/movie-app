@@ -1,9 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NewMovieCardComponent} from "../../components/new-movie-card/new-movie-card.component";
-import {GetMockDataService} from "../../services/get-mock-data.service";
-import {Router} from "@angular/router";
-import {MovieService} from "../../services/movie.service";
-import {Movie} from "../../models/movie.model";
 import {Subject, takeUntil} from "rxjs";
 import {Store} from "@ngrx/store";
 import {selectMovies} from "../../store/selectors";
@@ -25,7 +21,6 @@ export class TopRateComponent implements OnInit, OnDestroy {
   selectedMovies$ = this.store.select(selectMovies);
 
   constructor(
-    private movieService: MovieService,
     private store: Store,
   ) {}
 
@@ -39,14 +34,6 @@ export class TopRateComponent implements OnInit, OnDestroy {
       .subscribe(movies => {
         this.dataResult = movies
     })
-
-    // this.movieService.getMovieListByCategory('top_rated')
-    //   .pipe(
-    //     takeUntil(this.destroy$)
-    //   )
-    //   .subscribe(data => {
-    //   this.dataResult = data.results
-    // })
   }
 
   public ngOnDestroy(): void {

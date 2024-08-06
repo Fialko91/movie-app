@@ -20,9 +20,7 @@ export class EntrancePageComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   selectedMovies$ = this.store.select(selectAllMovies);
 
-  constructor(
-    private store: Store
-    ) {
+  constructor(private store: Store) {
   }
 
   ngOnInit(): void {

@@ -3,7 +3,6 @@ import {HttpClient} from "@angular/common/http";
 import {forkJoin, map, Observable, reduce, switchMap} from "rxjs";
 import {Movie, MovieModel} from "../models/movie.model";
 import {apiKey, baseUrl} from "../environments/environment.model";
-import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,6 @@ export class MovieAllService {
   getAllCategoryMovieList(): Observable<Movie[]> {
     // Array to hold Observables of HTTP requests
     const requests: Observable<MovieModel>[] = [];
-
 
     // Create HTTP request for each category
     this.categories.forEach(category => {
