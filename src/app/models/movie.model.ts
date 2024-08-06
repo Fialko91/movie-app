@@ -1,6 +1,7 @@
 export interface MovieModel {
   page?: number,
-  results: Movie[]
+  results: Movie[],
+  movieResults: Movie[]
 }
 
 export interface Movie {
